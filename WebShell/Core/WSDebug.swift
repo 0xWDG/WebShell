@@ -3,7 +3,7 @@
 //  WebShell
 //
 //  Created by Wesley de Groot on 31-01-16.
-//  Copyright © 2018 WebShell. All rights reserved.
+//  Copyright WebShell 2018, All rights reserved.
 //
 
 import Foundation
@@ -129,7 +129,7 @@ extension WSViewController {
 
 		if (download) {
 			if (element["WebElementLinkURL"] != nil) {
-				lastURL = element["WebElementLinkURL"]! as! URL
+                lastURL = element["WebElementLinkURL"]! as? URL
 
                 if settings.cmDownload || settings.cmNewWindow {
 					NewMenu.append(NSMenuItem.separator())
@@ -397,7 +397,7 @@ extension WSViewController {
      - Parameter Sender: Anyobject
      */
 	@objc func createNewInstance(_ Sender: AnyObject) -> Void {
-		openNewWindow(url: "\(lastURL)", height: "0", width: "0")
+        openNewWindow(url: "\(String(describing: lastURL))", height: "0", width: "0")
 	}
 
     /**

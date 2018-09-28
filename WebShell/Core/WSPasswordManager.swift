@@ -3,7 +3,7 @@
 //  WebShell
 //
 //  Created by Wesley de Groot on 02-11-17.
-//  Copyright © 2018 WebShell. All rights reserved.
+//  Copyright WebShell 2018, All rights reserved.
 //
 //  TODO: Create a safe password storage, instead of UserDefaults.
 

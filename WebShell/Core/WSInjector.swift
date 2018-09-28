@@ -3,7 +3,7 @@
 //  WebShell
 //
 //  Created by Wesley de Groot on 31-01-16.
-//  Copyright © 2018 WebShell. All rights reserved.
+//  Copyright WebShell 2018, All rights reserved.
 //
 
 import Foundation
@@ -89,16 +89,16 @@ import WebKit
 		let myNofification: @convention(block)(NSString?, NSString?, NSString?) -> Void = {(title: NSString?, message: NSString?, icon: NSString?) in
 			self.makeNotification(title!, message: message!, icon: icon!)
 		}
-		jsContext.objectForKeyedSubscript("Notification").setObject(unsafeBitCast(myNofification, to: AnyObject.self), forKeyedSubscript: "note" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("Notification").setObject(unsafeBitCast(myNofification, to: AnyObject.self), forKeyedSubscript: "note" as (NSCopying & NSObjectProtocol))
 		
 		// Add console.log ;)
 		// Add Console.log (and console.error, and console.warn)
 		if settings.consoleSupport {
 			jsContext.evaluateScript("var console = {log: function () {var message = '';for (var i = 0; i < arguments.length; i++) {message += arguments[i] + ' '};console.print(message)},warn: function () {var message = '';for (var i = 0; i < arguments.length; i++) {message += arguments[i] + ' '};console.print(message)},error: function () {var message = '';for (var i = 0; i < arguments.length; i++){message += arguments[i] + ' '};console.print(message)}};")
-			let logFunction: @convention(block)(NSString!) -> Void = {(message: NSString!) in
-				print("JS: \(message)")
+            let logFunction: @convention(block)(NSString?) -> Void = {(message: NSString!) in
+                print("JS: \(String(describing: message))")
 			}
-			jsContext.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, to: AnyObject.self), forKeyedSubscript: "print" as (NSCopying & NSObjectProtocol)!)
+			jsContext.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, to: AnyObject.self), forKeyedSubscript: "print" as (NSCopying & NSObjectProtocol))
 		}
 		
 		// @wdg Add support for target=_blank
@@ -107,36 +107,36 @@ import WebKit
 		jsContext.evaluateScript("var WSApp={};") ;
 		
 		// _blank external
-		let openInBrowser: @convention(block)(NSString!) -> Void = {(url: NSString!) in
+        let openInBrowser: @convention(block)(NSString?) -> Void = {(url: NSString!) in
 			NSWorkspace.shared.open(URL(string: (url as String))!)
 		}
 		
 		// _blank internal
-		let openNow: @convention(block)(NSString!) -> Void = {(url: NSString!) in
+        let openNow: @convention(block)(NSString?) -> Void = {(url: NSString!) in
 			self.loadUrl((url as String))
 		}
 		// _blank external
-		jsContext.objectForKeyedSubscript("WSApp").setObject(unsafeBitCast(openInBrowser, to: AnyObject.self), forKeyedSubscript: "openExternal" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("WSApp").setObject(unsafeBitCast(openInBrowser, to: AnyObject.self), forKeyedSubscript: "openExternal" as (NSCopying & NSObjectProtocol))
 		
 		// _blank internal
-		jsContext.objectForKeyedSubscript("WSApp").setObject(unsafeBitCast(openNow, to: AnyObject.self), forKeyedSubscript: "openInternal" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("WSApp").setObject(unsafeBitCast(openNow, to: AnyObject.self), forKeyedSubscript: "openInternal" as (NSCopying & NSObjectProtocol))
 		
 		// @wdg Add Print Support
 		// Issue: #39
 		// window.print()
 		let printMe: @convention(block)(NSString?) -> Void = {(url: NSString?) in self.printThisPage(self)}
-		jsContext.objectForKeyedSubscript("window").setObject(unsafeBitCast(printMe, to: AnyObject.self), forKeyedSubscript: "print" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("window").setObject(unsafeBitCast(printMe, to: AnyObject.self), forKeyedSubscript: "print" as (NSCopying & NSObjectProtocol))
 		
 		// navigator.getBattery()
-		jsContext.objectForKeyedSubscript("navigator").setObject(BatteryManager.self, forKeyedSubscript: "battery" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("navigator").setObject(BatteryManager.self, forKeyedSubscript: "battery" as (NSCopying & NSObjectProtocol))
 		
 		jsContext.evaluateScript("window.navigator.getBattery = window.navigator.battery.getBattery;")
 		
 		// navigator.vibrate
-		let vibrateNow: @convention(block)(NSString!) -> Void = {(data: NSString!) in
+        let vibrateNow: @convention(block)(NSString?) -> Void = {(data: NSString!) in
 			self.flashScreen(data)
 		}
-		jsContext.objectForKeyedSubscript("navigator").setObject(unsafeBitCast(vibrateNow, to: AnyObject.self), forKeyedSubscript: "vibrate" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("navigator").setObject(unsafeBitCast(vibrateNow, to: AnyObject.self), forKeyedSubscript: "vibrate" as (NSCopying & NSObjectProtocol))
         
 		// @wdg Add localstorage Support
 		// Issue: #25
@@ -147,9 +147,9 @@ import WebKit
 			UserDefaults.standard.setValue(value, forKey: newKey)
 		}
 		
-		let getFromLocal: @convention(block)(NSString!) -> String = {(key: NSString!) in
+        let getFromLocal: @convention(block)(NSString?) -> String = {(key: NSString!) in
 			let host: String = (self.mainWebview.mainFrame.dataSource?.request.url?.host)!
-			let newKey = "WSLS:\(host):\(key)"
+            let newKey = "WSLS:\(host):\(String(describing: key))"
 			let val = UserDefaults.standard.value(forKey: newKey as String)
 			
 			if let myVal = val as? String {
@@ -160,8 +160,8 @@ import WebKit
 			}
 		}
 		
-		jsContext.objectForKeyedSubscript("localStorage").setObject(unsafeBitCast(saveToLocal, to: AnyObject.self), forKeyedSubscript: "setItem" as (NSCopying & NSObjectProtocol)!)
-		jsContext.objectForKeyedSubscript("localStorage").setObject(unsafeBitCast(getFromLocal, to: AnyObject.self), forKeyedSubscript: "getItem" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("localStorage").setObject(unsafeBitCast(saveToLocal, to: AnyObject.self), forKeyedSubscript: "setItem" as (NSCopying & NSObjectProtocol))
+		jsContext.objectForKeyedSubscript("localStorage").setObject(unsafeBitCast(getFromLocal, to: AnyObject.self), forKeyedSubscript: "getItem" as (NSCopying & NSObjectProtocol))
 		
 		// @wdg Support for window.open (popup)
 		// Issue: #21
@@ -170,7 +170,7 @@ import WebKit
         let windowOpen: @convention(block)(NSString?, NSString?, NSString?, NSString?) -> Void = {(url: NSString?, target: NSString?, specs: NSString?, replace: NSString?) in
             self.parseWindowOpen(url! as String, options: specs! as String)
         }
-		jsContext.objectForKeyedSubscript("window").setObject(unsafeBitCast(windowOpen, to: AnyObject.self), forKeyedSubscript: "open" as (NSCopying & NSObjectProtocol)!)
+		jsContext.objectForKeyedSubscript("window").setObject(unsafeBitCast(windowOpen, to: AnyObject.self), forKeyedSubscript: "open" as (NSCopying & NSObjectProtocol))
         
 		// Get window.webshell
 		let nsObject: Any? = Bundle.main.infoDictionary!["CFBundleShortVersionString"]
@@ -187,7 +187,7 @@ import WebKit
                                   password: (password as String)
             )
         }
-        jsContext.objectForKeyedSubscript("WSApp").setObject(unsafeBitCast(savePassword, to: AnyObject.self), forKeyedSubscript: "savePassword" as (NSCopying & NSObjectProtocol)!)
+        jsContext.objectForKeyedSubscript("WSApp").setObject(unsafeBitCast(savePassword, to: AnyObject.self), forKeyedSubscript: "savePassword" as (NSCopying & NSObjectProtocol))
         
         _WSInjectCSS(jsContext)
         _WSInjectJS(jsContext)

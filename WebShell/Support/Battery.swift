@@ -3,7 +3,7 @@
 //  WebShell
 //
 //  Created by lizhuoli on 15/12/31.
-//  Copyright © 2018 WebShell. All rights reserved.
+//  Copyright WebShell 2018, All rights reserved.
 //
 
 import Foundation
@@ -46,7 +46,7 @@ import WebKit
             return battery
         } else {
             let batterySource = sourceArray.object(at: 0) // just use first battery
-            let pSource = IOPSGetPowerSourceDescription(blob, batterySource as CFTypeRef!).takeUnretainedValue()
+            let pSource = IOPSGetPowerSourceDescription(blob, batterySource as CFTypeRef).takeUnretainedValue()
             
             let batteryDic:NSDictionary = pSource
             

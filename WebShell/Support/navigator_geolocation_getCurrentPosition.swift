@@ -3,7 +3,7 @@
 //  WebShell
 //
 //  Created by Wesley de Groot on 29-01-16.
-//  Copyright © 2018 WebShell. All rights reserved.
+//  Copyright WebShell 2018, All rights reserved.
 //
 
 import Foundation
@@ -110,7 +110,7 @@ extension WSViewController {
 			
 			return "undefined"
 		}
-		self.mainWebview.mainFrame.javaScriptContext.objectForKeyedSubscript("navigator").objectForKeyedSubscript("geolocation").setObject(unsafeBitCast(navigatorGeolocationGetCurrentPosition, to: AnyObject.self), forKeyedSubscript: "getCurrentPosition" as (NSCopying & NSObjectProtocol)!)
+		self.mainWebview.mainFrame.javaScriptContext.objectForKeyedSubscript("navigator").objectForKeyedSubscript("geolocation").setObject(unsafeBitCast(navigatorGeolocationGetCurrentPosition, to: AnyObject.self), forKeyedSubscript: "getCurrentPosition" as (NSCopying & NSObjectProtocol))
 	}
 }
 // TEST
