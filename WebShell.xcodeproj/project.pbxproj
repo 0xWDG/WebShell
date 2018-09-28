@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25B2225F1C25328E00F848B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25B2225E1C25328E00F848B7 /* Assets.xcassets */; };
+		25B222621C25328E00F848B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B222601C25328E00F848B7 /* Main.storyboard */; };
+		6E2DD7DE1CC56209000FA61A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6E2DD7DD1CC56209000FA61A /* Credits.rtf */; };
+		6EE64A961CCBEAA000E9DA9B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE64A951CCBEAA000E9DA9B /* Settings.swift */; };
+		DD0D711A1FDCF595002F50D1 /* WSStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71081FDCF595002F50D1 /* WSStringExtension.swift */; };
+		DD0D711B1FDCF595002F50D1 /* WSDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71091FDCF595002F50D1 /* WSDownloadManager.swift */; };
+		DD0D711C1FDCF595002F50D1 /* WSInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710A1FDCF595002F50D1 /* WSInjector.swift */; };
+		DD0D711D1FDCF595002F50D1 /* WSWebViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710B1FDCF595002F50D1 /* WSWebViewFunctions.swift */; };
+		DD0D711E1FDCF595002F50D1 /* WSPasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710C1FDCF595002F50D1 /* WSPasswordManager.swift */; };
+		DD0D711F1FDCF595002F50D1 /* WSEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710D1FDCF595002F50D1 /* WSEventMonitor.swift */; };
+		DD0D71211FDCF595002F50D1 /* WSDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710F1FDCF595002F50D1 /* WSDebug.swift */; };
+		DD0D71221FDCF595002F50D1 /* WSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71101FDCF595002F50D1 /* WSViewController.swift */; };
+		DD0D71231FDCF595002F50D1 /* WSCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71111FDCF595002F50D1 /* WSCore.swift */; };
+		DD0D71241FDCF595002F50D1 /* WSCustomInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71121FDCF595002F50D1 /* WSCustomInject.swift */; };
+		DD0D71251FDCF595002F50D1 /* WSBaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71131FDCF595002F50D1 /* WSBaseSettings.swift */; };
+		DD0D71271FDCF595002F50D1 /* WSPageActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71151FDCF595002F50D1 /* WSPageActions.swift */; };
+		DD0D71281FDCF595002F50D1 /* WSTrackpadGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71161FDCF595002F50D1 /* WSTrackpadGestures.swift */; };
+		DD0D71291FDCF595002F50D1 /* WSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71171FDCF595002F50D1 /* WSApplication.swift */; };
+		DD0D712A1FDCF595002F50D1 /* WSFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71181FDCF595002F50D1 /* WSFileHandler.swift */; };
+		DD0D712B1FDCF595002F50D1 /* WSAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71191FDCF595002F50D1 /* WSAppDelegate.swift */; };
+		DD0D712C1FDCF5B6002F50D1 /* WSAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71191FDCF595002F50D1 /* WSAppDelegate.swift */; };
+		DD0D712D1FDCF5B6002F50D1 /* WSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71171FDCF595002F50D1 /* WSApplication.swift */; };
+		DD0D712E1FDCF5B6002F50D1 /* WSBaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71131FDCF595002F50D1 /* WSBaseSettings.swift */; };
+		DD0D712F1FDCF5B6002F50D1 /* WSCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71111FDCF595002F50D1 /* WSCore.swift */; };
+		DD0D71301FDCF5B6002F50D1 /* WSCustomInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71121FDCF595002F50D1 /* WSCustomInject.swift */; };
+		DD0D71311FDCF5B6002F50D1 /* WSDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710F1FDCF595002F50D1 /* WSDebug.swift */; };
+		DD0D71321FDCF5B6002F50D1 /* WSDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71091FDCF595002F50D1 /* WSDownloadManager.swift */; };
+		DD0D71331FDCF5B6002F50D1 /* WSEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710D1FDCF595002F50D1 /* WSEventMonitor.swift */; };
+		DD0D71341FDCF5B6002F50D1 /* WSFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71181FDCF595002F50D1 /* WSFileHandler.swift */; };
+		DD0D71351FDCF5B6002F50D1 /* WSInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710A1FDCF595002F50D1 /* WSInjector.swift */; };
+		DD0D71361FDCF5B6002F50D1 /* WSPageActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71151FDCF595002F50D1 /* WSPageActions.swift */; };
+		DD0D71371FDCF5B6002F50D1 /* WSPasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710C1FDCF595002F50D1 /* WSPasswordManager.swift */; };
+		DD0D71391FDCF5B6002F50D1 /* WSStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71081FDCF595002F50D1 /* WSStringExtension.swift */; };
+		DD0D713A1FDCF5B6002F50D1 /* WSTrackpadGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71161FDCF595002F50D1 /* WSTrackpadGestures.swift */; };
+		DD0D713B1FDCF5B6002F50D1 /* WSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71101FDCF595002F50D1 /* WSViewController.swift */; };
+		DD0D713D1FDCF5B6002F50D1 /* WSWebViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D710B1FDCF595002F50D1 /* WSWebViewFunctions.swift */; };
+		DD0D71421FDCF5FD002F50D1 /* navigator_geolocation_getCurrentPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D713F1FDCF5FD002F50D1 /* navigator_geolocation_getCurrentPosition.swift */; };
+		DD0D71431FDCF5FD002F50D1 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71401FDCF5FD002F50D1 /* Notifications.swift */; };
+		DD0D71441FDCF5FD002F50D1 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71411FDCF5FD002F50D1 /* Battery.swift */; };
+		DD0D71451FDCF610002F50D1 /* navigator_geolocation_getCurrentPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D713F1FDCF5FD002F50D1 /* navigator_geolocation_getCurrentPosition.swift */; };
+		DD0D71461FDCF610002F50D1 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71401FDCF5FD002F50D1 /* Notifications.swift */; };
+		DD0D71471FDCF610002F50D1 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0D71411FDCF5FD002F50D1 /* Battery.swift */; };
+		DD593BC61FDB7F4200C15D57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25B2225E1C25328E00F848B7 /* Assets.xcassets */; };
+		DD593BC71FDB7F4200C15D57 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6E2DD7DD1CC56209000FA61A /* Credits.rtf */; };
+		DD593BC81FDB7F4200C15D57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B222601C25328E00F848B7 /* Main.storyboard */; };
+		DD593BD91FDB80DC00C15D57 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD593BD51FDB80CB00C15D57 /* Settings.swift */; };
+		DEC374881FFEBE4000A8B04E /* WSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC374871FFEBE4000A8B04E /* WSWindow.swift */; };
+		DEC374891FFEBE4000A8B04E /* WSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC374871FFEBE4000A8B04E /* WSWindow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		25B222571C25328E00F848B7 /* WebShell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebShell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25B2225E1C25328E00F848B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		25B222611C25328E00F848B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E2DD7DD1CC56209000FA61A /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		6E3733301C2890A600CE0058 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		6EE64A951CCBEAA000E9DA9B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		DD0D71081FDCF595002F50D1 /* WSStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSStringExtension.swift; sourceTree = "<group>"; };
+		DD0D71091FDCF595002F50D1 /* WSDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSDownloadManager.swift; sourceTree = "<group>"; };
+		DD0D710A1FDCF595002F50D1 /* WSInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSInjector.swift; sourceTree = "<group>"; };
+		DD0D710B1FDCF595002F50D1 /* WSWebViewFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSWebViewFunctions.swift; sourceTree = "<group>"; };
+		DD0D710C1FDCF595002F50D1 /* WSPasswordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSPasswordManager.swift; sourceTree = "<group>"; };
+		DD0D710D1FDCF595002F50D1 /* WSEventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSEventMonitor.swift; sourceTree = "<group>"; };
+		DD0D710F1FDCF595002F50D1 /* WSDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSDebug.swift; sourceTree = "<group>"; };
+		DD0D71101FDCF595002F50D1 /* WSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSViewController.swift; sourceTree = "<group>"; };
+		DD0D71111FDCF595002F50D1 /* WSCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSCore.swift; sourceTree = "<group>"; };
+		DD0D71121FDCF595002F50D1 /* WSCustomInject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSCustomInject.swift; sourceTree = "<group>"; };
+		DD0D71131FDCF595002F50D1 /* WSBaseSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSBaseSettings.swift; sourceTree = "<group>"; };
+		DD0D71151FDCF595002F50D1 /* WSPageActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSPageActions.swift; sourceTree = "<group>"; };
+		DD0D71161FDCF595002F50D1 /* WSTrackpadGestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTrackpadGestures.swift; sourceTree = "<group>"; };
+		DD0D71171FDCF595002F50D1 /* WSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSApplication.swift; sourceTree = "<group>"; };
+		DD0D71181FDCF595002F50D1 /* WSFileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSFileHandler.swift; sourceTree = "<group>"; };
+		DD0D71191FDCF595002F50D1 /* WSAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSAppDelegate.swift; sourceTree = "<group>"; };
+		DD0D713F1FDCF5FD002F50D1 /* navigator_geolocation_getCurrentPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navigator_geolocation_getCurrentPosition.swift; sourceTree = "<group>"; };
+		DD0D71401FDCF5FD002F50D1 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		DD0D71411FDCF5FD002F50D1 /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		DD0D716A1FDCF7C1002F50D1 /* Udemy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Udemy-Info.plist"; sourceTree = "<group>"; };
+		DD0D716B1FDCF7C1002F50D1 /* WebShell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WebShell-Info.plist"; sourceTree = "<group>"; };
+		DD593BCD1FDB7F4200C15D57 /* Udemy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Udemy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD593BD51FDB80CB00C15D57 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		DEC374871FFEBE4000A8B04E /* WSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSWindow.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25B222541C25328E00F848B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD593BC41FDB7F4200C15D57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25B2224E1C25328E00F848B7 = {
+			isa = PBXGroup;
+			children = (
+				25B222591C25328E00F848B7 /* WebShell */,
+			);
+			sourceTree = "<group>";
+		};
+		25B222581C25328E00F848B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25B222571C25328E00F848B7 /* WebShell.app */,
+				DD593BCD1FDB7F4200C15D57 /* Udemy.app */,
+			);
+			name = Products;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		25B222591C25328E00F848B7 /* WebShell */ = {
+			isa = PBXGroup;
+			children = (
+				DD0D71071FDCF595002F50D1 /* Core */,
+				DD0D713E1FDCF5FD002F50D1 /* Support */,
+				DD593BD01FDB7F9100C15D57 /* Sites */,
+				DD0D716C1FDCF7E5002F50D1 /* Resources */,
+				DD0D716A1FDCF7C1002F50D1 /* Udemy-Info.plist */,
+				DD0D716B1FDCF7C1002F50D1 /* WebShell-Info.plist */,
+				6E2DD7DD1CC56209000FA61A /* Credits.rtf */,
+				25B222581C25328E00F848B7 /* Products */,
+			);
+			path = WebShell;
+			sourceTree = "<group>";
+		};
+		DD0D71071FDCF595002F50D1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DD0D71191FDCF595002F50D1 /* WSAppDelegate.swift */,
+				DD0D71171FDCF595002F50D1 /* WSApplication.swift */,
+				DD0D71131FDCF595002F50D1 /* WSBaseSettings.swift */,
+				DD0D71111FDCF595002F50D1 /* WSCore.swift */,
+				DD0D71121FDCF595002F50D1 /* WSCustomInject.swift */,
+				DD0D710F1FDCF595002F50D1 /* WSDebug.swift */,
+				DD0D71091FDCF595002F50D1 /* WSDownloadManager.swift */,
+				DD0D710D1FDCF595002F50D1 /* WSEventMonitor.swift */,
+				DD0D71181FDCF595002F50D1 /* WSFileHandler.swift */,
+				DD0D710A1FDCF595002F50D1 /* WSInjector.swift */,
+				DD0D71151FDCF595002F50D1 /* WSPageActions.swift */,
+				DD0D710C1FDCF595002F50D1 /* WSPasswordManager.swift */,
+				DD0D71081FDCF595002F50D1 /* WSStringExtension.swift */,
+				DD0D71161FDCF595002F50D1 /* WSTrackpadGestures.swift */,
+				DD0D71101FDCF595002F50D1 /* WSViewController.swift */,
+				DD0D710B1FDCF595002F50D1 /* WSWebViewFunctions.swift */,
+				DEC374871FFEBE4000A8B04E /* WSWindow.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		DD0D713E1FDCF5FD002F50D1 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DD0D713F1FDCF5FD002F50D1 /* navigator_geolocation_getCurrentPosition.swift */,
+				DD0D71401FDCF5FD002F50D1 /* Notifications.swift */,
+				DD0D71411FDCF5FD002F50D1 /* Battery.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		DD0D716C1FDCF7E5002F50D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				25B2225E1C25328E00F848B7 /* Assets.xcassets */,
+				25B222601C25328E00F848B7 /* Main.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DD0D716D1FDCF80A002F50D1 /* WebShell */ = {
+			isa = PBXGroup;
+			children = (
+				6EE64A951CCBEAA000E9DA9B /* Settings.swift */,
+			);
+			path = WebShell;
+			sourceTree = "<group>";
+		};
+		DD593BD01FDB7F9100C15D57 /* Sites */ = {
+			isa = PBXGroup;
+			children = (
+				DD0D716D1FDCF80A002F50D1 /* WebShell */,
+				DD593BD41FDB80CB00C15D57 /* Udemy */,
+			);
+			path = Sites;
+			sourceTree = "<group>";
+		};
+		DD593BD41FDB80CB00C15D57 /* Udemy */ = {
+			isa = PBXGroup;
+			children = (
+				DD593BD51FDB80CB00C15D57 /* Settings.swift */,
+			);
+			path = Udemy;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25B222561C25328E00F848B7 /* WebShell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25B222661C25328E00F848B7 /* Build configuration list for PBXNativeTarget "WebShell" */;
+			buildPhases = (
+				25B222531C25328E00F848B7 /* Sources */,
+				25B222541C25328E00F848B7 /* Frameworks */,
+				25B222551C25328E00F848B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WebShell;
+			productName = WebShell;
+			productReference = 25B222571C25328E00F848B7 /* WebShell.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DD593BAD1FDB7F4200C15D57 /* Udemy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD593BCA1FDB7F4200C15D57 /* Build configuration list for PBXNativeTarget "Udemy" */;
+			buildPhases = (
+				DD593BAE1FDB7F4200C15D57 /* Sources */,
+				DD593BC41FDB7F4200C15D57 /* Frameworks */,
+				DD593BC51FDB7F4200C15D57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Udemy;
+			productName = WebShell;
+			productReference = DD593BCD1FDB7F4200C15D57 /* Udemy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25B2224F1C25328E00F848B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = WebShell;
+				TargetAttributes = {
+					25B222561C25328E00F848B7 = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 4V2D72S45C;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+					DD593BAD1FDB7F4200C15D57 = {
+						DevelopmentTeam = 4V2D72S45C;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 25B222521C25328E00F848B7 /* Build configuration list for PBXProject "WebShell" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 25B2224E1C25328E00F848B7;
+			productRefGroup = 25B222581C25328E00F848B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25B222561C25328E00F848B7 /* WebShell */,
+				DD593BAD1FDB7F4200C15D57 /* Udemy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25B222551C25328E00F848B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25B2225F1C25328E00F848B7 /* Assets.xcassets in Resources */,
+				6E2DD7DE1CC56209000FA61A /* Credits.rtf in Resources */,
+				25B222621C25328E00F848B7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD593BC51FDB7F4200C15D57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD593BC61FDB7F4200C15D57 /* Assets.xcassets in Resources */,
+				DD593BC71FDB7F4200C15D57 /* Credits.rtf in Resources */,
+				DD593BC81FDB7F4200C15D57 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25B222531C25328E00F848B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD0D71291FDCF595002F50D1 /* WSApplication.swift in Sources */,
+				DD0D71421FDCF5FD002F50D1 /* navigator_geolocation_getCurrentPosition.swift in Sources */,
+				DD0D711E1FDCF595002F50D1 /* WSPasswordManager.swift in Sources */,
+				DD0D711A1FDCF595002F50D1 /* WSStringExtension.swift in Sources */,
+				DD0D711F1FDCF595002F50D1 /* WSEventMonitor.swift in Sources */,
+				DD0D71251FDCF595002F50D1 /* WSBaseSettings.swift in Sources */,
+				DD0D712B1FDCF595002F50D1 /* WSAppDelegate.swift in Sources */,
+				DD0D71211FDCF595002F50D1 /* WSDebug.swift in Sources */,
+				DD0D712A1FDCF595002F50D1 /* WSFileHandler.swift in Sources */,
+				6EE64A961CCBEAA000E9DA9B /* Settings.swift in Sources */,
+				DD0D71221FDCF595002F50D1 /* WSViewController.swift in Sources */,
+				DD0D71231FDCF595002F50D1 /* WSCore.swift in Sources */,
+				DEC374881FFEBE4000A8B04E /* WSWindow.swift in Sources */,
+				DD0D711C1FDCF595002F50D1 /* WSInjector.swift in Sources */,
+				DD0D71431FDCF5FD002F50D1 /* Notifications.swift in Sources */,
+				DD0D71271FDCF595002F50D1 /* WSPageActions.swift in Sources */,
+				DD0D71441FDCF5FD002F50D1 /* Battery.swift in Sources */,
+				DD0D711B1FDCF595002F50D1 /* WSDownloadManager.swift in Sources */,
+				DD0D711D1FDCF595002F50D1 /* WSWebViewFunctions.swift in Sources */,
+				DD0D71241FDCF595002F50D1 /* WSCustomInject.swift in Sources */,
+				DD0D71281FDCF595002F50D1 /* WSTrackpadGestures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD593BAE1FDB7F4200C15D57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD0D712C1FDCF5B6002F50D1 /* WSAppDelegate.swift in Sources */,
+				DD0D713D1FDCF5B6002F50D1 /* WSWebViewFunctions.swift in Sources */,
+				DD0D71451FDCF610002F50D1 /* navigator_geolocation_getCurrentPosition.swift in Sources */,
+				DD0D71361FDCF5B6002F50D1 /* WSPageActions.swift in Sources */,
+				DD0D71341FDCF5B6002F50D1 /* WSFileHandler.swift in Sources */,
+				DD0D71391FDCF5B6002F50D1 /* WSStringExtension.swift in Sources */,
+				DD0D71301FDCF5B6002F50D1 /* WSCustomInject.swift in Sources */,
+				DD0D712F1FDCF5B6002F50D1 /* WSCore.swift in Sources */,
+				DD0D71351FDCF5B6002F50D1 /* WSInjector.swift in Sources */,
+				DD0D712D1FDCF5B6002F50D1 /* WSApplication.swift in Sources */,
+				DD0D71311FDCF5B6002F50D1 /* WSDebug.swift in Sources */,
+				DD0D712E1FDCF5B6002F50D1 /* WSBaseSettings.swift in Sources */,
+				DEC374891FFEBE4000A8B04E /* WSWindow.swift in Sources */,
+				DD0D71371FDCF5B6002F50D1 /* WSPasswordManager.swift in Sources */,
+				DD0D71461FDCF610002F50D1 /* Notifications.swift in Sources */,
+				DD0D71331FDCF5B6002F50D1 /* WSEventMonitor.swift in Sources */,
+				DD0D71471FDCF610002F50D1 /* Battery.swift in Sources */,
+				DD0D713B1FDCF5B6002F50D1 /* WSViewController.swift in Sources */,
+				DD593BD91FDB80DC00C15D57 /* Settings.swift in Sources */,
+				DD0D71321FDCF5B6002F50D1 /* WSDownloadManager.swift in Sources */,
+				DD0D713A1FDCF5B6002F50D1 /* WSTrackpadGestures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		25B222601C25328E00F848B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25B222611C25328E00F848B7 /* Base */,
+				6E3733301C2890A600CE0058 /* nl */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		25B222641C25328E00F848B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		25B222651C25328E00F848B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		25B222671C25328E00F848B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4V2D72S45C;
+				INFOPLIST_FILE = "WebShell/WebShell-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.Web-Shell.WebShell";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		25B222681C25328E00F848B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4V2D72S45C;
+				INFOPLIST_FILE = "WebShell/WebShell-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.Web-Shell.WebShell";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		DD593BCB1FDB7F4200C15D57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = Udemy;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4V2D72S45C;
+				INFOPLIST_FILE = "WebShell/Udemy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.djyde.WebShell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		DD593BCC1FDB7F4200C15D57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = Udemy;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4V2D72S45C;
+				INFOPLIST_FILE = "WebShell/Udemy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.djyde.WebShell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25B222521C25328E00F848B7 /* Build configuration list for PBXProject "WebShell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25B222641C25328E00F848B7 /* Debug */,
+				25B222651C25328E00F848B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25B222661C25328E00F848B7 /* Build configuration list for PBXNativeTarget "WebShell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25B222671C25328E00F848B7 /* Debug */,
+				25B222681C25328E00F848B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD593BCA1FDB7F4200C15D57 /* Build configuration list for PBXNativeTarget "Udemy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD593BCB1FDB7F4200C15D57 /* Debug */,
+				DD593BCC1FDB7F4200C15D57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 25B2224F1C25328E00F848B7 /* Project object */;
+}
