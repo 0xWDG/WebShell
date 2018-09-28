@@ -3,7 +3,7 @@
 //  WebShell
 //
 //  Created by lizhuoli on 15/12/31.
-//  Copyright WebShell 2018, All rights reserved.
+//  Copyright © 2018 WebShell. All rights reserved.
 //
 
 import Foundation

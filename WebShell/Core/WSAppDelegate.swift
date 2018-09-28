@@ -3,7 +3,7 @@
 //  WebShell
 //
 //  Created by Randy on 15/12/19.
-//  Copyright WebShell 2018, All rights reserved.
+//  Copyright © 2018 WebShell. All rights reserved.
 //
 //  Wesley de Groot (@wdg), Added Notification and console.log Support
 
