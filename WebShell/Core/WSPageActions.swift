@@ -101,7 +101,7 @@ extension WSViewController {
 			progressBar.isHidden = false
 			progressBar.startAnimation(self)
 			progressBar.maxValue = 100;
-			progressBar.minValue = 1;
+			progressBar.minValue = 1
 			progressBar.increment(by: 24)
 		}
 		let URL = Foundation.URL(string: url)

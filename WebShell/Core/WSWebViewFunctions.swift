@@ -25,8 +25,8 @@ extension WSViewController {
         if settings.showLoadingBar {
             print("Started loading animation")
             progressBar.startAnimation(self)
-            progressBar.maxValue = 100;
-            progressBar.minValue = 1;
+            progressBar.maxValue = 100
+            progressBar.minValue = 1
             progressBar.increment(by: 24)
         }
         
@@ -42,8 +42,8 @@ extension WSViewController {
         if settings.showLoadingBar {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
-            progressBar.maxValue = 100;
-            progressBar.minValue = 1;
+            progressBar.maxValue = 100
+            progressBar.minValue = 1
             progressBar.increment(by: 24)
         }
     }
@@ -54,8 +54,8 @@ extension WSViewController {
         if settings.showLoadingBar {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
-            progressBar.maxValue = 100;
-            progressBar.minValue = 1;
+            progressBar.maxValue = 100
+            progressBar.minValue = 1
             progressBar.increment(by: 24)
         }
     }
