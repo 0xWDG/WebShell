@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e6e7675bfaf488c897f5426ccee8797)](https://app.codacy.com/app/wdg/WebShell?utm_source=github.com&utm_medium=referral&utm_content=Web-Shell/WebShell&utm_campaign=Badge_Grade_Settings)
+
 <p align="center">
   <img src="http://7mnoy7.com1.z0.glb.clouddn.com/webshell/logo.png?imageView/2/w/128" />
 </p>
