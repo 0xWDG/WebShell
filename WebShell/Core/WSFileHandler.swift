@@ -31,8 +31,7 @@ extension WSViewController {
                 
                 // make the upload qeue named 'uploadQeue'
                 let uploadQeue: NSMutableArray = NSMutableArray()
-                for i in 0 ..< panel.urls.count
-                {
+                for i in 0 ..< panel.urls.count {
                     // Add to upload qeue, needing relativePath.
                     uploadQeue.add(panel.urls[i].relativePath)
                 }
