@@ -16,12 +16,12 @@ class WSBaseSettings {
 	var lastURL: String {
 		set {
 			let def = UserDefaults.standard
-			def.set(newValue, forKey: title + "-LastURL")
+            def.set(newValue, forKey: title ?? "WebShell" + "-LastURL")
 			def.synchronize()
 		}
 		get {
 			let def = UserDefaults.standard
-			if let url = def.value(forKey: title + "-LastURL") as? String {
+            if let url = def.value(forKey: title ?? "WebShell" + "-LastURL") as? String {
 				return url
 			}
 			return ""
@@ -29,7 +29,7 @@ class WSBaseSettings {
 	}
 	
 	// set the app title
-	var	title = Bundle.main.infoDictionary!["CFBundleName"] as! String
+	var	title = Bundle.main.infoDictionary?["CFBundleName"] as? String
 		
 	// if you want to use the default one then leave it default || default = title/version based on Safari/AppleWebKit (KHTML, like Gecko)
 	// otherwise change it to a useragent you want. (Default: "default")
