@@ -14,7 +14,6 @@ class EventMonitor {
     fileprivate var monitor: Any?
     fileprivate let mask: NSEvent.EventTypeMask
     fileprivate let handler: (NSEvent?) -> ()
-    
     /**
      Init monitoring for events
      
