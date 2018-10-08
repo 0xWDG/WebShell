@@ -19,7 +19,8 @@ import Cocoa
  */
 @objc(WSApplication)
 class WSApplication: NSApplication {
-	override func sendEvent(_ event: NSEvent) {
+
+    override func sendEvent(_ event: NSEvent) {
 		if event.type == .systemDefined && event.subtype.rawValue == 8 {
 			let keyCode = ((event.data1 & 0xFFFF0000) >> 16)
 			let keyFlags = (event.data1 & 0x0000FFFF)

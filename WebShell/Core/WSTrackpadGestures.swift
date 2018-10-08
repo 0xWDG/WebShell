@@ -110,7 +110,7 @@ class GestureUtils {
             }
             if (sum > 0) {
                 return .right
-            }else /*if(sum < 0)*/ {
+            } else {
                 return .left
             }
         }

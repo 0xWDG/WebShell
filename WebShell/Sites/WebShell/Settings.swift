@@ -17,7 +17,9 @@ class Settings: WSBaseSettings {
 		self.url = "http://djyde.github.io/WebShell/WebShell/"
         
         // set the app title
-        self.title = Bundle.main.infoDictionary!["CFBundleName"] as! String
+        if let castedTitle = Bundle.main.infoDictionary!["CFBundleName"] as? String {
+            self.title = castedTitle
+        }
         
         // if you want to use the default one then leave it default || default = title/version based on Safari/AppleWebKit (KHTML, like Gecko)
         // otherwise change it to a useragent you want. (Default: "default")

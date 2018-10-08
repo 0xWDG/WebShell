@@ -106,6 +106,7 @@ class WSBaseSettings {
 		if lastURL.isEmpty {
 			return url
 		}
+
         return openLastUrl ? lastURL : url
 	}
 }

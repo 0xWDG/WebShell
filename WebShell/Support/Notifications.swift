@@ -54,7 +54,7 @@ extension WSViewController {
 	// Issue: #2
 	func flashScreen(_ data: NSString) -> Void {
 		if ((Int(data as String)) != nil || data.isEqual(to: "undefined")) {
-			AudioServicesPlaySystemSound(kSystemSoundID_FlashScreen) ;
+			AudioServicesPlaySystemSound(kSystemSoundID_FlashScreen)
 		} else {
 			let time: [String] = (data as String).components(separatedBy: ",")
 			for i in 0 ..< time.count {

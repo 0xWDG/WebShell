@@ -84,7 +84,6 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
 	
 	override func viewDidLoad() {
 		checkSettings()
-		//self.view = goodView()
 		super.viewDidLoad()
 		
 		mainWebview.uiDelegate = self
