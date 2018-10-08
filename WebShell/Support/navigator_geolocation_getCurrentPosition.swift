@@ -63,10 +63,10 @@ extension WSViewController {
 			// Safari Demo: [Log] 2
 			
 			if (haveLocation) {
-				let check_correct: String = correct!.lowercased()[0...8]
+				let checkCorrect: String = correct!.lowercased()[0...8]
 				let returnAs: String = "{coords: {coords: 'Coordinates', accuracy: 10, altitude: \(location!.altitude), altitudeAccuracy: 10, heading: '\(location!.course)', longitude: \(location!.coordinate.longitude), latitude: \(location!.coordinate.latitude), speed: \(location!.speed)}}"
 				
-				if (check_correct == "function") {
+				if (checkCorrect == "function") {
 					// Begin with function (all lowercase)
 					var newFunction = correct!.lowercased()[0...8]
 					// Make the function named _WSLRD (WebShell Location Return Data)
@@ -85,10 +85,10 @@ extension WSViewController {
 				}
 			} else {
 				if (invalid != nil) {
-					let check_invalid: String = invalid!.lowercased()[0...8]
+					let checkInvalid: String = invalid!.lowercased()[0...8]
 					let returnAs: String = "{coords: {coords: null, accuracy: null, altitude: null, altitudeAccuracy: null, heading: null, longitude: null, latitude: null, speed: null}}"
 					
-					if (check_invalid == "function") {
+					if (checkInvalid == "function") {
 						// Begin with function (all lowercase)
 						var newFunction = invalid!.lowercased()[0...8]
 						// Make the function named _WSLRD (WebShell Location Return Data)
