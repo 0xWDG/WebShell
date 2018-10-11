@@ -128,10 +128,8 @@ extension WSViewController {
     
     /**
      Add Print Support (#39) [@wdg]
-     
-     - Parameter Sender: The sending object
-     */
-    @objc func printThisPage(_ sender: AnyObject?) {
+    */
+    @objc func printThisPage() {
         let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString
         
         let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)

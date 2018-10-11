@@ -123,7 +123,7 @@ import WebKit
         // @wdg Add Print Support
         // Issue: #39
         // window.print()
-        let printMe: @convention(block) (NSString?) -> Void = { (_: NSString?) in self.printThisPage(self) }
+        let printMe: @convention(block) (NSString?) -> Void = { (_: NSString?) in self.printThisPage() }
         jsContext.objectForKeyedSubscript("window").setObject(unsafeBitCast(printMe, to: AnyObject.self), forKeyedSubscript: "print" as (NSCopying & NSObjectProtocol))
         
         // navigator.getBattery()
