@@ -74,13 +74,15 @@ extension WSViewController {
         }
         
         if settings.useragent.lowercased() == "default" {
-            if var UA = Bundle.main.infoDictionary?["CFBundleName"] as? String {
-                UA = UA + "/"
-                UA = UA + (Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)
-                UA = UA + " based on Safari/AppleWebKit (KHTML, like Gecko)"
-                
-                UserDefaults.standard.register(defaults: ["UserAgent": UA])
-                mainWebview.customUserAgent = UA
+            if let version = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) {
+                if var UA = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+                    UA = UA + "/"
+                    UA = UA + version
+                    UA = UA + " based on Safari/AppleWebKit (KHTML, like Gecko)"
+                    
+                    UserDefaults.standard.register(defaults: ["UserAgent": UA])
+                    mainWebview.customUserAgent = UA
+                }
             }
         } else {
             let UA = settings.useragent

@@ -116,7 +116,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
      
      - Parameter sender: the sender object
      */
-    @IBAction func printThisPage(_ sender: AnyObject) {
+    @IBAction func printThisPageBtn(_ sender: AnyObject) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "printThisPage"), object: nil)
     }
     

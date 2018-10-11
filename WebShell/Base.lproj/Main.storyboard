@@ -73,7 +73,7 @@
                                         </menuItem>
                                         <menuItem title="Print" keyEquivalent="p" id="dlv-gu-35p">
                                             <connections>
-                                                <action selector="printThisPage:" target="Voe-Tx-rLC" id="WCT-a3-0u4"/>
+                                                <action selector="printThisPageBtn:" target="Voe-Tx-rLC" id="4zb-bg-JHC"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="7ie-IE-K6N"/>
