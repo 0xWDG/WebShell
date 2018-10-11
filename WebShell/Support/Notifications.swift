@@ -14,7 +14,7 @@ import AudioToolbox
 // Issue: #2
 // This extension will handle the HTML5 Notification API.
 extension WSViewController {
-	func clearNotificationCount() -> Void {
+	@objc func clearNotificationCount() {
 		notificationCount = 0
 	}
 	

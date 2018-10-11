@@ -47,16 +47,6 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
         if !NSViewController().responds(to: #selector(NSViewController.viewWillAppear)) {
             checkSettings()
             
-            let myPopup: NSAlert = NSAlert()
-            myPopup.messageText = "Hello!"
-            myPopup.informativeText = "You are running mavericks?"
-            myPopup.alertStyle = NSAlert.Style.informational
-            myPopup.addButton(withTitle: "Yes")
-            myPopup.addButton(withTitle: "No")
-            
-            let res = myPopup.runModal()
-            noop(res)
-            
             if firstAppear {
                 initWindow()
             }

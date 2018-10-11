@@ -319,7 +319,7 @@ extension WSViewController {
         var body: String = (String("There is a problem loading \(currentUrl)").addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)?.replacingOccurrences(of: "&", with: "%26"))!
         body.append("%0D%0AThe%20problem%20is%3A%0D%0A...")
 
-        let url: String = "https://github.com/djyde/WebShell/issues/new?title=\(issue)&body=\(body)"
+        let url: String = "https://github.com/Web-Shell/WebShell/issues/new?title=\(issue)&body=\(body)"
 
         NSWorkspace.shared.open(URL(string: (url as String))!)
     }

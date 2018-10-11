@@ -17,28 +17,47 @@ extension WSViewController {
         let observers = ["goHome", "reload", "copyUrl", "clearNotificationCount", "printThisPage"]
         
         for observer in observers {
-            NotificationCenter.default.addObserver(self, selector: NSSelectorFromString(observer), name: NSNotification.Name(rawValue: observer), object: nil)
+            if responds(to: Selector(observer)) {
+                NotificationCenter.default.addObserver(self, selector: Selector(observer), name: NSNotification.Name(rawValue: observer), object: nil)
+            } else {
+                let alert = NSAlert()
+                alert.addButton(withTitle: "Ok")
+                alert.alertStyle = .critical
+                alert.messageText = "Critical error"
+                alert.informativeText = "Selector \"\(observer)\" is not callable!\nPlease file a bug report!"
+                alert.runModal()
+                
+                if let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
+                    if let appBuild = Bundle.main.infoDictionary!["CFBundleVersion"] as? String {
+                        let issue: String = String("[AUTOMATIC BUG REPORT] selector \"\(observer)\" unreachable").addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!.replacingOccurrences(of: "&", with: "%26")
+                        let body: String = (String("Product: Web-Shell/WebShell\r\n\r\nVersion: \(appVersion)\r\n\r\nBuild: \(appBuild) \r\n\r\n").addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)?.replacingOccurrences(of: "&", with: "%26"))!
+                        let url: String = "https://github.com/Web-Shell/WebShell/issues/new?title=\(issue)&body=\(body)"
+                        
+                        NSWorkspace.shared.open(URL(string: (url as String))!)
+                    }
+                }
+            }
         }
     }
     
     /**
      Go to the home url
      */
-    func goHome() {
+    @objc func goHome() {
         loadUrl(settings.url)
     }
     
     /**
      Reload the current webpage
      */
-    func reload() {
+    @objc func reload() {
         mainWebview.mainFrame.reload()
     }
     
     /**
      Copy the URL
      */
-    func copyUrl() {
+    @objc func copyUrl() {
         let currentUrl: String = (mainWebview.mainFrame.dataSource?.request.url?.absoluteString)!
         let clipboard: NSPasteboard = NSPasteboard.general
         clipboard.clearContents()
@@ -110,7 +129,7 @@ extension WSViewController {
      
      - Parameter Sender: The sending object
      */
-    func printThisPage(_ Sender: AnyObject?) {
+    @objc func printThisPage(_ sender: AnyObject?) {
         let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString
         
         let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)
