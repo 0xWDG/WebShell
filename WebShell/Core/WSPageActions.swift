@@ -14,8 +14,8 @@ extension WSViewController {
      Add Observers for menu items
      */
     func addObservers() {
-        let observers = ["goHome", "reload", "copyUrl", "clearNotificationCount", "printThisPage"] // Observers
-
+        let observers = ["goHome", "reload", "copyUrl", "clearNotificationCount", "printThisPage"]
+        
         for observer in observers {
             if responds(to: Selector(observer)) {
                 NotificationCenter.default.addObserver(self, selector: Selector(observer), name: NSNotification.Name(rawValue: observer), object: nil)
@@ -130,15 +130,15 @@ extension WSViewController {
      Add Print Support (#39) [@wdg]
      */
     @objc func printThisPage() {
-        let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString
-        
-        let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)
-        operation.jobTitle = "Printing \(url!)"
-        operation.printInfo.orientation = NSPrintInfo.PaperOrientation.landscape
-        operation.printInfo.scalingFactor = 0.7
-        
-        if operation.run() {
-            print("Printed?")
+        if let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString {
+            let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)
+            operation.jobTitle = "Printing \(url)"
+            operation.printInfo.orientation = NSPrintInfo.PaperOrientation.landscape
+            operation.printInfo.scalingFactor = 0.7
+            
+            if operation.run() {
+                print("Printed?")
+            }
         }
     }
 }
