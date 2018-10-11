@@ -40,10 +40,8 @@ extension WSViewController {
      Used for popups, and debug options.
      */
     func checkSettings() {
-        // Need to overwrite settings?
         if CommandLine.argc > 0 {
             for i in stride(from: 1, to: Int(CommandLine.argc), by: 2) {
-//            for (var i = 1; i < Int(Process.argc) ; i = i + 2) {
                 if (String(describing: CommandLine.arguments[i])) == "-NSDocumentRevisionsDebugMode" {
                     if (String(describing: CommandLine.arguments[i + 1])) == "YES" {
                         settings.debugmode = true
@@ -87,11 +85,6 @@ extension WSViewController {
      Issue: #61
      */
     func webView(_ sender: WebView!, contextMenuItemsForElement element: [AnyHashable: Any]!, defaultMenuItems: [Any]!) -> [Any]! {
-        //Swift 2..
-        //func webView(_ sender: WebView!, contextMenuItemsForElement element: [NSObject: Any]!, defaultMenuItems: [Any]!) -> [Any]!
-
-        // @wdg Fix contextmenu (problem with the swift 2 update #50)
-        // Issue: #51
         var download = false
 
         for i in defaultMenuItems {
@@ -143,8 +136,8 @@ extension WSViewController {
         }
 
         NewMenu.append(NSMenuItem.separator())
-        // Add debug menu. (if enabled)
 
+        // Add debug menu. (if enabled)
         if settings.debugmode {
             let debugMenu = NSMenu(title: "Debug")
             if IElement.title != "NSMenuItem" {
@@ -244,12 +237,10 @@ extension WSViewController {
      - Parameter Sender: Anyobject
      */
     @objc func ___sendNotifications() {
-        // Minimize app
         if NSApplication.shared.keyWindow?.isMiniaturized == false {
             NSApplication.shared.keyWindow?.miniaturize(self)
         }
 
-        // Send Actual notification.
         makeNotification("Test Notification", message: "Hi!", icon: "https://camo.githubusercontent.com/ee999b2d8fa5413229fdc69e0b53144f02b7b840/687474703a2f2f376d6e6f79372e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f7765627368656c6c2f6c6f676f2e706e673f696d616765566965772f322f772f313238")
     }
 
@@ -260,8 +251,8 @@ extension WSViewController {
      */
     @objc func _openURL(_ Sender: AnyObject) {
         let msg = NSAlert()
-        msg.addButton(withTitle: "OK") // 1st button
-        msg.addButton(withTitle: "Cancel") // 2nd button
+        msg.addButton(withTitle: "OK")
+        msg.addButton(withTitle: "Cancel")
         msg.messageText = "URL"
         msg.informativeText = "Where you need to go?"
 
@@ -292,8 +283,8 @@ extension WSViewController {
      */
     @objc func _injectJS(_ Sender: AnyObject) {
         let msg = NSAlert()
-        msg.addButton(withTitle: "OK") // 1st button
-        msg.addButton(withTitle: "Cancel") // 2nd button
+        msg.addButton(withTitle: "OK")
+        msg.addButton(withTitle: "Cancel")
         msg.messageText = "Inject Javascript"
         msg.informativeText = "Inject Javascript\nBe Carefull!"
 
@@ -348,8 +339,6 @@ extension WSViewController {
 
         let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)
         operation.jobTitle = "Printing \(url!)"
-
-        // If want to print landscape
         operation.printInfo.orientation = NSPrintInfo.PaperOrientation.landscape
         operation.printInfo.scalingFactor = 0.7
 

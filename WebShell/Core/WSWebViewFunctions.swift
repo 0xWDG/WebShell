@@ -23,7 +23,6 @@ extension WSViewController {
     func webView(_ sender: WebView!, didStartProvisionalLoadFor frame: WebFrame!) {
         // @wdg: Better progress indicator | Issue: #37
         if settings.showLoadingBar {
-            print("Started loading animation")
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
             progressBar.minValue = 1
@@ -74,7 +73,7 @@ extension WSViewController {
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         progressBar.increment(by: 50)
         progressBar.stopAnimation(self)
-        progressBar.isHidden = true // Hide after we're done.
+        progressBar.isHidden = true
         progressBar.doubleValue = 1
         if !launchingLabel.isHidden {
             launchingLabel.isHidden = true
@@ -93,7 +92,7 @@ extension WSViewController {
         if settings.needLocation {
             self.websiteWantsLocation()
         } else {
-            self.locationInjector(false) // Says i don't have a location!
+            self.locationInjector(false)
         }
     }
     

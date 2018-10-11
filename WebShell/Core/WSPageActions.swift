@@ -14,7 +14,6 @@ extension WSViewController {
      Add Observers for menu items
      */
     func addObservers() {
-        // add menu action observers
         let observers = ["goHome", "reload", "copyUrl", "clearNotificationCount", "printThisPage"]
         
         for observer in observers {
@@ -51,29 +50,25 @@ extension WSViewController {
      Initialize settings
      */
     func initSettings() {
-        // controll the progress bar
         if !settings.showLoadingBar {
-            progressBar.isHidden = true // @wdg: Better progress indicator | Issue: #37
+            progressBar.isHidden = true
         }
         
-        // @wdg Add Custom useragent support
-        // Issue: #52
         if settings.useragent.lowercased() == "default" {
             if var UA = Bundle.main.infoDictionary?["CFBundleName"] as? String {
                 UA = UA + "/"
                 UA = UA + (Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)
                 UA = UA + " based on Safari/AppleWebKit (KHTML, like Gecko)"
                 
-                UserDefaults.standard.register(defaults: ["UserAgent": UA]) // For iOS
-                mainWebview.customUserAgent = UA // For Mac OS X
+                UserDefaults.standard.register(defaults: ["UserAgent": UA])
+                mainWebview.customUserAgent = UA
             }
         } else {
             let UA = settings.useragent
-            UserDefaults.standard.register(defaults: ["UserAgent": UA]) // For iOS
-            mainWebview.customUserAgent = UA // For Mac OS X
+            UserDefaults.standard.register(defaults: ["UserAgent": UA])
+            mainWebview.customUserAgent = UA
         }
         
-        // set launching text
         launchingLabel.stringValue = settings.launchingText
     }
     
@@ -82,12 +77,11 @@ extension WSViewController {
      */
     func initWindow() {
         firstAppear = false
-        // set window title
+        
         if let title = settings.title {
             mainWindow.window?.title = title
         }
         
-        // Force some preferences before loading...
         mainWebview.preferences.isJavaScriptEnabled = true
         mainWebview.preferences.javaScriptCanOpenWindowsAutomatically = true
         mainWebview.preferences.arePlugInsEnabled = true
@@ -121,8 +115,6 @@ extension WSViewController {
         
         let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)
         operation.jobTitle = "Printing \(url!)"
-        
-        // If want to print landscape
         operation.printInfo.orientation = NSPrintInfo.PaperOrientation.landscape
         operation.printInfo.scalingFactor = 0.7
         

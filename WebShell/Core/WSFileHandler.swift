@@ -13,32 +13,22 @@ import WebKit
 // Issue: #29
 // This extension will handle up & downloads
 extension WSViewController {
-    // @wdg: Enable file uploads.
-    // Issue: #29
     @objc(webView:runOpenPanelForFileButtonWithResultListener:allowMultipleFiles:) func webView(_ sender: WebView!, runOpenPanelForFileButtonWith resultListener: WebOpenPanelResultListener!, allowMultipleFiles: Bool) {
-        // Init panel with options
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = allowMultipleFiles
         panel.canChooseDirectories = false
         panel.canCreateDirectories = false
         panel.canChooseFiles = true
-        
-        // On clicked on ok then...
         panel.begin { (result) -> Void in
-            // User clicked OK
             if result.rawValue == NSFileHandlingPanelOKButton {
-                // make the upload qeue named 'uploadQeue'
                 let uploadQeue: NSMutableArray = NSMutableArray()
                 for i in 0 ..< panel.urls.count {
-                    // Add to upload qeue, needing relativePath.
                     uploadQeue.add(panel.urls[i].relativePath)
                 }
                 
                 if panel.urls.count == 1 {
-                    // One file
                     resultListener.chooseFilename(String(describing: uploadQeue[0]))
                 } else {
-                    // Multiple files
                     resultListener.chooseFilenames(uploadQeue as [AnyObject])
                 }
             }

@@ -50,17 +50,16 @@ class WebShelllDownloadManager {
         let request = NSMutableURLRequest(url: URL)
         request.httpMethod = "GET"
 
-        noop(session) // temporary we want no stupid "fix-it" warnings.
+        noop(session)
 
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if error == nil {
                 let statusCode = (response as! HTTPURLResponse).statusCode
-                self.noop(statusCode as AnyObject) // For further use HTTP Status code.
+                self.noop(statusCode as AnyObject)
 
                 let saveData = NSData(data: data!) as Data
                 try? saveData.write(to: savePath!, options: [.atomic])
 
-                // Ask the question on the main queue.
                 OperationQueue.main.addOperation({
                     if self.dialog("Download of \"\(self.Fname)\" complete", text: "Would you like to open the downloads folder?") {
                         NSWorkspace.shared.open(self.DFolder)
@@ -68,7 +67,6 @@ class WebShelllDownloadManager {
                 })
             }
             else {
-                // Failure
                 print("Faulure: %@", error!.localizedDescription)
             }
         })

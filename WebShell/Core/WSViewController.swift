@@ -44,8 +44,6 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
     // @wdg Possible fix for Mavericks
     // Issue: #18
     override func awakeFromNib() {
-        // if (![self respondsToSelector:@selector(viewWillAppear)]) {
-        
         if !NSViewController().responds(to: #selector(NSViewController.viewWillAppear)) {
             checkSettings()
             
@@ -57,10 +55,8 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
             myPopup.addButton(withTitle: "No")
             
             let res = myPopup.runModal()
+            noop(res)
             
-            print("MAVERICKS \(res)")
-            
-            // OS X 10.9
             if firstAppear {
                 initWindow()
             }
@@ -70,7 +66,6 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
             mainWebview.downloadDelegate = self
             mainWebview.editingDelegate = self
             mainWebview.policyDelegate = self
-            // WebUIDelegate
             
             addObservers()
             initSettings()
@@ -89,8 +84,6 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
         mainWebview.downloadDelegate = self
         mainWebview.editingDelegate = self
         mainWebview.policyDelegate = self
-        
-        //        WebShellSettings["WSMW"] = mainWebview;
         
         checkSettings()
         addObservers()
