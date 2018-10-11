@@ -14,8 +14,8 @@ extension WSViewController {
      Add Observers for menu items
      */
     func addObservers() {
-        let observers = ["goHome", "reload", "copyUrl", "clearNotificationCount", "printThisPage"]
-        
+        let observers = ["goHome", "reload", "copyUrl", "clearNotificationCount", "printThisPage"] // Observers
+
         for observer in observers {
             if responds(to: Selector(observer)) {
                 NotificationCenter.default.addObserver(self, selector: Selector(observer), name: NSNotification.Name(rawValue: observer), object: nil)
@@ -128,7 +128,7 @@ extension WSViewController {
     
     /**
      Add Print Support (#39) [@wdg]
-    */
+     */
     @objc func printThisPage() {
         let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString
         

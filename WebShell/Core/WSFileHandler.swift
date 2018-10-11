@@ -25,7 +25,7 @@ extension WSViewController {
                 for i in 0 ..< panel.urls.count {
                     uploadQeue.add(panel.urls[i].relativePath)
                 }
-                
+
                 if panel.urls.count == 1 {
                     resultListener.chooseFilename(String(describing: uploadQeue[0]))
                 } else {
@@ -34,7 +34,7 @@ extension WSViewController {
             }
         }
     }
-    
+
     /**
      Download window.
      
@@ -43,10 +43,10 @@ extension WSViewController {
     func downloadWindow(forAuthenticationSheet download: WebDownload!) -> NSWindow! {
         print("I'd like to download something")
         print(download)
-        
+
         return NSWindow()
     }
-    
+
     // Usefull for debugging..
     @nonobjc func webView(_ sender: WebView!, mouseDidMoveOverElement elementInformation: [NSObject: Any]!, modifierFlags: Int) {
         // print("Sender=\(sender)\nEleInfo=\(elementInformation)\nModifier=\(modifierFlags)")

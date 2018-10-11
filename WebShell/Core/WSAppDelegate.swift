@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let popover = NSPopover()
     let statusItem = NSStatusBar.system.statusItem(withLength: -2)
     var eventMonitor: EventMonitor?
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // @wdg Merge Statut with WebShell.
         // Issue: #56
