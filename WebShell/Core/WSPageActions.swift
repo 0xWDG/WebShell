@@ -44,7 +44,9 @@ extension WSViewController {
      Go to the home url
      */
     @objc func goHome() {
-        loadUrl(settings.url)
+        if let theUrl = settings?.url {
+            loadUrl(theUrl)
+        }
     }
     
     /**
@@ -69,11 +71,11 @@ extension WSViewController {
      Initialize settings
      */
     func initSettings() {
-        if !settings.showLoadingBar {
+        if !(settings?.showLoadingBar ?? true) {
             progressBar.isHidden = true
         }
         
-        if settings.useragent.lowercased() == "default" {
+        if settings?.useragent.lowercased() == "default" {
             if let version = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) {
                 if var UA = Bundle.main.infoDictionary?["CFBundleName"] as? String {
                     UA = UA + "/"
@@ -85,12 +87,13 @@ extension WSViewController {
                 }
             }
         } else {
-            let UA = settings.useragent
-            UserDefaults.standard.register(defaults: ["UserAgent": UA])
-            mainWebview.customUserAgent = UA
+            if let UA = settings?.useragent {
+                UserDefaults.standard.register(defaults: ["UserAgent": UA])
+                mainWebview.customUserAgent = UA
+            }
         }
         
-        launchingLabel.stringValue = settings.launchingText
+        launchingLabel.stringValue = settings?.launchingText ?? NSLocalizedString("Loading...", comment: "Loading...")
     }
     
     /**
@@ -99,7 +102,7 @@ extension WSViewController {
     func initWindow() {
         firstAppear = false
         
-        if let title = settings.title {
+        if let title = settings?.title {
             mainWindow.window?.title = title
         }
         
@@ -115,7 +118,7 @@ extension WSViewController {
      */
     
     func loadUrl(_ url: String) {
-        if settings.showLoadingBar {
+        if (settings?.showLoadingBar ?? true) {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
             progressBar.maxValue = 100

@@ -44,15 +44,15 @@ extension WSViewController {
             for i in stride(from: 1, to: Int(CommandLine.argc), by: 2) {
                 if (String(describing: CommandLine.arguments[i])) == "-NSDocumentRevisionsDebugMode" {
                     if (String(describing: CommandLine.arguments[i + 1])) == "YES" {
-                        settings.debugmode = true
-                        settings.consoleSupport = true
+                        settings?.debugmode = true
+                        settings?.consoleSupport = true
                     }
                 }
 
                 if (String(describing: Process().arguments?[i])).uppercased() == "-DEBUG" {
                     if (String(describing: Process().arguments![i + 1])).uppercased() == "YES" || (String(describing: Process().arguments?[i + 1])).uppercased() == "true" {
-                        settings.debugmode = true
-                        settings.consoleSupport = true
+                        settings?.debugmode = true
+                        settings?.consoleSupport = true
                     }
                 }
 
@@ -61,15 +61,15 @@ extension WSViewController {
                 }
 
                 if (String(describing: CommandLine.arguments[i])) == "-url" {
-                    settings.url = String(CommandLine.arguments[i + 1])
+                    settings?.url = String(CommandLine.arguments[i + 1])
                 }
 
                 if (String(describing: CommandLine.arguments[i])) == "-height" {
-                    settings.initialWindowHeight = (Int(CommandLine.arguments[i + 1]) > 250) ? Int(CommandLine.arguments[i + 1])! : 250
+                    settings?.initialWindowHeight = (Int(CommandLine.arguments[i + 1]) > 250) ? Int(CommandLine.arguments[i + 1])! : 250
                 }
 
                 if (String(describing: CommandLine.arguments[i])) == "-width" {
-                    settings.initialWindowWidth = (Int(CommandLine.arguments[i + 1]) > 250) ? Int(CommandLine.arguments[i + 1])! : 250
+                    settings?.initialWindowWidth = (Int(CommandLine.arguments[i + 1]) > 250) ? Int(CommandLine.arguments[i + 1])! : 250
                 }
             }
         }
@@ -106,7 +106,7 @@ extension WSViewController {
         var NewMenu: [AnyObject] = [AnyObject]()
 
         // if can back
-        if settings.cmBackAndForward {
+        if (settings?.cmBackAndForward ?? true) {
             if mainWebview.canGoBack {
                 NewMenu.append(NSMenuItem(title: "Back", action: #selector(WSViewController._goBack(_:)), keyEquivalent: ""))
             }
@@ -114,7 +114,7 @@ extension WSViewController {
                 NewMenu.append(NSMenuItem(title: "Forward", action: #selector(WSViewController._goForward(_:)), keyEquivalent: ""))
             }
         }
-        if settings.cmReload {
+        if (settings?.cmReload ?? true) {
             NewMenu.append(NSMenuItem(title: "Reload", action: #selector(WSViewController._reloadPage(_:)), keyEquivalent: ""))
         }
 
@@ -122,13 +122,13 @@ extension WSViewController {
             if element["WebElementLinkURL"] != nil {
                 lastURL = element["WebElementLinkURL"]! as? URL
 
-                if settings.cmDownload || settings.cmNewWindow {
+                if (settings?.cmDownload ?? true || settings?.cmNewWindow ?? true) {
                     NewMenu.append(NSMenuItem.separator())
 
-                    if settings.cmNewWindow {
+                    if (settings?.cmNewWindow ?? true) {
                         NewMenu.append(NSMenuItem(title: "Open Link in a new Window", action: #selector(WSViewController.createNewInstance(_:)), keyEquivalent: ""))
                     }
-                    if settings.cmDownload {
+                    if (settings?.cmDownload ?? true) {
                         NewMenu.append(NSMenuItem(title: "Download Linked File", action: #selector(WSViewController.downloadFileWithURL(_:)), keyEquivalent: ""))
                     }
                 }
@@ -138,7 +138,7 @@ extension WSViewController {
         NewMenu.append(NSMenuItem.separator())
 
         // Add debug menu. (if enabled)
-        if settings.debugmode {
+        if (settings?.debugmode ?? false) {
             let debugMenu = NSMenu(title: "Debug")
             if IElement.title != "NSMenuItem" {
                 debugMenu.addItem(IElement) // <-- Inspect element...
@@ -403,7 +403,7 @@ extension WSViewController {
      - Parameter S: Any
      */
     func Dprint(_ S: Any) {
-        if settings.debugmode {
+        if (settings?.debugmode ?? false) {
             print(S)
         }
     }
@@ -414,7 +414,7 @@ extension WSViewController {
      - Parameter S: Any
      */
     func Ddump(_ S: Any) {
-        if settings.debugmode {
+        if (settings?.debugmode ?? false) {
             dump(S)
         }
     }

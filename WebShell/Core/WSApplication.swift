@@ -140,11 +140,13 @@ extension WSViewController {
 
         // @wdg Merge Statut with WebShell.
         // Issue: #56
-        if settings.menuBarApp {
-            if (NSApplication.shared.keyWindow) != nil {
-                if self.MustCloseWindow {
-                    NSApplication.shared.keyWindow?.close()
-                    self.MustCloseWindow = false
+        if let menuBarApp = settings?.menuBarApp {
+            if menuBarApp {
+                if (NSApplication.shared.keyWindow) != nil {
+                    if self.MustCloseWindow {
+                        NSApplication.shared.keyWindow?.close()
+                        self.MustCloseWindow = false
+                    }
                 }
             }
         }

@@ -36,7 +36,7 @@ extension WSViewController: NSGestureRecognizerDelegate {
     }
     
     override func touchesMoved(with event: NSEvent) {
-        let swipeType: SwipeType = settings.navigateViaTrackpad ? GestureUtils.swipe(mainWebview, event, twoFingersTouches) : .none
+        let swipeType: SwipeType = (settings?.navigateViaTrackpad ?? true) ? GestureUtils.swipe(mainWebview, event, twoFingersTouches) : .none
         if swipeType == .right {
             if mainWebview.canGoForward {
                 if mainWebview.isLoading {
@@ -68,14 +68,17 @@ class GestureUtils {
         if event.type == NSEvent.EventType.gesture {
             let touches: Set<NSTouch> = event.touches(matching: NSTouch.Phase.any, in: view)
             if touches.count == 2 {
-                twoFingersTouches = [String: NSTouch]()
                 for touch in touches {
-                    twoFingersTouches!["\(touch.identity)"] = touch
+                    twoFingersTouches?["\(touch.identity)"] = touch
                 }
             }
         }
-        
-        return twoFingersTouches
+
+        if let touches = twoFingersTouches {
+            return touches
+        }
+
+        return [String: NSTouch]()
     }
     
     /**

@@ -22,7 +22,7 @@ extension WSViewController {
     // webview settings
     func webView(_ sender: WebView!, didStartProvisionalLoadFor frame: WebFrame!) {
         // @wdg: Better progress indicator | Issue: #37
-        if settings.showLoadingBar {
+        if (settings?.showLoadingBar ?? true) {
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
             progressBar.minValue = 1
@@ -38,7 +38,7 @@ extension WSViewController {
     // @wdg: Better progress indicator
     // Issue: #37
     func webView(_ sender: WebView!, willPerformClientRedirectTo URL: URL!, delay seconds: TimeInterval, fire date: Date!, for frame: WebFrame!) {
-        if settings.showLoadingBar {
+        if (settings?.showLoadingBar ?? true) {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
@@ -50,7 +50,7 @@ extension WSViewController {
     // @wdg: Better progress indicator
     // Issue: #37
     func webView(_ webView: WebView!, decidePolicyForMIMEType type: String!, request: URLRequest!, frame: WebFrame!, decisionListener listener: WebPolicyDecisionListener!) {
-        if settings.showLoadingBar {
+        if (settings?.showLoadingBar ?? true) {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
@@ -80,7 +80,7 @@ extension WSViewController {
         }
         // Save URL for last navigated page
         if let url = mainWebview.mainFrame.dataSource?.request.url?.absoluteString {
-            settings.lastURL = url
+            settings?.lastURL = url
         }
         
         // Inject Webhooks
@@ -89,7 +89,7 @@ extension WSViewController {
         
         // @wdg Add location support
         // Issue: #41
-        if settings.needLocation {
+        if (settings?.needLocation ?? false) {
             self.websiteWantsLocation()
         } else {
             self.locationInjector(false)
@@ -97,7 +97,7 @@ extension WSViewController {
     }
     
     func webView(_ sender: WebView!, didReceiveTitle title: String!, for frame: WebFrame!) {
-        if settings.useDocumentTitle {
+        if (settings?.useDocumentTitle ?? true) {
             mainWindow.window?.title = title
         }
     }

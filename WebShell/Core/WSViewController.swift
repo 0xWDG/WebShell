@@ -24,7 +24,7 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
     @IBOutlet var launchingLabel: NSTextField!
     @IBOutlet var progressBar: NSProgressIndicator!
     
-    var settings = Settings.shared
+    var settings: Settings? = Settings.shared
     var firstLoadingStarted = false
     var firstAppear = true
     var notificationCount = 0
@@ -59,7 +59,9 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
             
             addObservers()
             initSettings()
-            loadUrl(settings.startURL())
+            if let startUrl = settings?.startURL() {
+                loadUrl(startUrl)
+            }
             WSMediaLoop(self)
             WSinitSwipeGestures()
         }
@@ -78,7 +80,9 @@ class WSViewController: NSViewController, WebFrameLoadDelegate, WebUIDelegate, W
         checkSettings()
         addObservers()
         initSettings()
-        loadUrl(settings.startURL())
+        if let startUrl = settings?.startURL() {
+            loadUrl(startUrl)
+        }
         WSMediaLoop(self)
         WSinitSwipeGestures()
     }
