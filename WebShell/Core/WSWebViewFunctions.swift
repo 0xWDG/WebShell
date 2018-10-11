@@ -22,15 +22,14 @@ extension WSViewController {
     // webview settings
     func webView(_ sender: WebView!, didStartProvisionalLoadFor frame: WebFrame!) {
         // @wdg: Better progress indicator | Issue: #37
-        if settings.showLoadingBar {
-            print("Started loading animation")
+        if (settings?.showLoadingBar ?? true) {
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
             progressBar.minValue = 1
             progressBar.increment(by: 24)
         }
         
-        if (!firstLoadingStarted) {
+        if !firstLoadingStarted {
             firstLoadingStarted = true
             launchingLabel.isHidden = false
         }
@@ -39,7 +38,7 @@ extension WSViewController {
     // @wdg: Better progress indicator
     // Issue: #37
     func webView(_ sender: WebView!, willPerformClientRedirectTo URL: URL!, delay seconds: TimeInterval, fire date: Date!, for frame: WebFrame!) {
-        if settings.showLoadingBar {
+        if (settings?.showLoadingBar ?? true) {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
@@ -51,7 +50,7 @@ extension WSViewController {
     // @wdg: Better progress indicator
     // Issue: #37
     func webView(_ webView: WebView!, decidePolicyForMIMEType type: String!, request: URLRequest!, frame: WebFrame!, decisionListener listener: WebPolicyDecisionListener!) {
-        if settings.showLoadingBar {
+        if (settings?.showLoadingBar ?? true) {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
@@ -66,7 +65,7 @@ extension WSViewController {
         progressBar.increment(by: 50)
         progressBar.stopAnimation(self)
         progressBar.isHidden = true
-        progressBar.doubleValue = 1;
+        progressBar.doubleValue = 1
     }
     
     // @wdg: Better progress indicator
@@ -74,31 +73,31 @@ extension WSViewController {
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         progressBar.increment(by: 50)
         progressBar.stopAnimation(self)
-        progressBar.isHidden = true // Hide after we're done.
-        progressBar.doubleValue = 1;
-        if (!launchingLabel.isHidden) {
+        progressBar.isHidden = true
+        progressBar.doubleValue = 1
+        if !launchingLabel.isHidden {
             launchingLabel.isHidden = true
         }
         // Save URL for last navigated page
-		if let url = mainWebview.mainFrame.dataSource?.request.url?.absoluteString {
-			settings.lastURL = url
-		}
-		
+        if let url = mainWebview.mainFrame.dataSource?.request.url?.absoluteString {
+            settings?.lastURL = url
+        }
+        
         // Inject Webhooks
         self.injectWebhooks(mainWebview.mainFrame.javaScriptContext)
         self.loopThroughiFrames()
         
         // @wdg Add location support
         // Issue: #41
-        if settings.needLocation {
+        if (settings?.needLocation ?? false) {
             self.websiteWantsLocation()
         } else {
-            self.locationInjector(false) // Says i don't have a location!
+            self.locationInjector(false)
         }
     }
     
     func webView(_ sender: WebView!, didReceiveTitle title: String!, for frame: WebFrame!) {
-        if settings.useDocumentTitle {
+        if (settings?.useDocumentTitle ?? true) {
             mainWindow.window?.title = title
         }
     }

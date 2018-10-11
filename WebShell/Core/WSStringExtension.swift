@@ -16,9 +16,7 @@ public extension String {
      get string length
      */
     public var length: Int {
-        get {
-            return self.count
-        }
+        return self.count
     }
     
     /**
@@ -62,25 +60,21 @@ public extension String {
      - Parameter i: Index
      */
     public subscript(i: Int) -> Character {
-        get {
-            let index = self.index(self.startIndex, offsetBy: i)
-            return self[index]
-        }
+        let index = self.index(self.startIndex, offsetBy: i)
+        return self[index]
     }
+    
     /**
      Add subscript
      
      - Parameter r: Range
      */
     public subscript(r: Range<Int>) -> String {
-        get {
-            let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
-            let endIndex = self.index(self.startIndex, offsetBy: r.upperBound - 1)
-            
-            return String(self[startIndex..<endIndex])
-        }
+        let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
+        let endIndex = self.index(self.startIndex, offsetBy: r.upperBound - 1)
+        
+        return String(self[startIndex..<endIndex])
     }
-    
     
     /**
      Add subscript (swift 3)
@@ -88,11 +82,9 @@ public extension String {
      - Parameter r: ClosedRange
      */
     public subscript(r: ClosedRange<Int>) -> String {
-        get {
-            let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
-            let endIndex = self.index(self.startIndex, offsetBy: r.upperBound - 1)
-            
-            return String(self[startIndex..<endIndex])
-        }
+        let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
+        let endIndex = self.index(self.startIndex, offsetBy: r.upperBound - 1)
+        
+        return String(self[startIndex..<endIndex])
     }
 }

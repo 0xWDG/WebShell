@@ -6,40 +6,60 @@
 //  Copyright © 2018 WebShell. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 extension WSViewController {
     /**
      Add Observers for menu items
      */
     func addObservers() {
-        // add menu action observers
         let observers = ["goHome", "reload", "copyUrl", "clearNotificationCount", "printThisPage"]
         
         for observer in observers {
-            NotificationCenter.default.addObserver(self, selector: NSSelectorFromString(observer), name: NSNotification.Name(rawValue: observer), object: nil)
+            if responds(to: Selector(observer)) {
+                NotificationCenter.default.addObserver(self, selector: Selector(observer), name: NSNotification.Name(rawValue: observer), object: nil)
+            } else {
+                let alert = NSAlert()
+                alert.addButton(withTitle: "Ok")
+                alert.alertStyle = .critical
+                alert.messageText = "Critical error"
+                alert.informativeText = "Selector \"\(observer)\" is not callable!\nPlease file a bug report!"
+                alert.runModal()
+                
+                if let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
+                    if let appBuild = Bundle.main.infoDictionary!["CFBundleVersion"] as? String {
+                        let issue: String = String("[AUTOMATIC BUG REPORT] selector \"\(observer)\" unreachable").addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!.replacingOccurrences(of: "&", with: "%26")
+                        let body: String = (String("Product: Web-Shell/WebShell\r\n\r\nVersion: \(appVersion)\r\n\r\nBuild: \(appBuild) \r\n\r\n").addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)?.replacingOccurrences(of: "&", with: "%26"))!
+                        let url: String = "https://github.com/Web-Shell/WebShell/issues/new?title=\(issue)&body=\(body)"
+                        
+                        NSWorkspace.shared.open(URL(string: (url as String))!)
+                    }
+                }
+            }
         }
     }
     
     /**
      Go to the home url
      */
-    func goHome() {
-        loadUrl(settings.url)
+    @objc func goHome() {
+        if let theUrl = settings?.url {
+            loadUrl(theUrl)
+        }
     }
     
     /**
      Reload the current webpage
      */
-    func reload() {
+    @objc func reload() {
         mainWebview.mainFrame.reload()
     }
     
     /**
      Copy the URL
      */
-    func copyUrl() {
+    @objc func copyUrl() {
         let currentUrl: String = (mainWebview.mainFrame.dataSource?.request.url?.absoluteString)!
         let clipboard: NSPasteboard = NSPasteboard.general
         clipboard.clearContents()
@@ -51,30 +71,29 @@ extension WSViewController {
      Initialize settings
      */
     func initSettings() {
-        // controll the progress bar
-        if !settings.showLoadingBar {
-            progressBar.isHidden = true // @wdg: Better progress indicator | Issue: #37
+        if !(settings?.showLoadingBar ?? true) {
+            progressBar.isHidden = true
         }
         
-        // @wdg Add Custom useragent support
-        // Issue: #52
-        if settings.useragent.lowercased() == "default" {
-            if var UA = Bundle.main.infoDictionary?["CFBundleName"] as? String {
-                UA = UA + "/"
-                UA = UA + (Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)
-                UA = UA + " based on Safari/AppleWebKit (KHTML, like Gecko)"
-                
-                UserDefaults.standard.register(defaults: ["UserAgent": UA]) // For iOS
-                mainWebview.customUserAgent = UA // For Mac OS X
+        if settings?.useragent.lowercased() == "default" {
+            if let version = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) {
+                if var UA = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+                    UA = UA + "/"
+                    UA = UA + version
+                    UA = UA + " based on Safari/AppleWebKit (KHTML, like Gecko)"
+                    
+                    UserDefaults.standard.register(defaults: ["UserAgent": UA])
+                    mainWebview.customUserAgent = UA
+                }
             }
         } else {
-            let UA = settings.useragent
-            UserDefaults.standard.register(defaults: ["UserAgent": UA]) // For iOS
-            mainWebview.customUserAgent = UA // For Mac OS X
+            if let UA = settings?.useragent {
+                UserDefaults.standard.register(defaults: ["UserAgent": UA])
+                mainWebview.customUserAgent = UA
+            }
         }
         
-        // set launching text
-        launchingLabel.stringValue = settings.launchingText
+        launchingLabel.stringValue = settings?.launchingText ?? NSLocalizedString("Loading...", comment: "Loading...")
     }
     
     /**
@@ -82,12 +101,11 @@ extension WSViewController {
      */
     func initWindow() {
         firstAppear = false
-        // set window title
-        if let title = settings.title {
+        
+        if let title = settings?.title {
             mainWindow.window?.title = title
         }
-
-        // Force some preferences before loading...
+        
         mainWebview.preferences.isJavaScriptEnabled = true
         mainWebview.preferences.javaScriptCanOpenWindowsAutomatically = true
         mainWebview.preferences.arePlugInsEnabled = true
@@ -100,7 +118,7 @@ extension WSViewController {
      */
     
     func loadUrl(_ url: String) {
-        if settings.showLoadingBar {
+        if (settings?.showLoadingBar ?? true) {
             progressBar.isHidden = false
             progressBar.startAnimation(self)
             progressBar.maxValue = 100
@@ -113,21 +131,17 @@ extension WSViewController {
     
     /**
      Add Print Support (#39) [@wdg]
-     
-     - Parameter Sender: The sending object
      */
-    func printThisPage(_ Sender: AnyObject?) -> Void {
-        let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString
-        
-        let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)
-        operation.jobTitle = "Printing \(url!)"
-        
-        // If want to print landscape
-        operation.printInfo.orientation = NSPrintInfo.PaperOrientation.landscape
-        operation.printInfo.scalingFactor = 0.7
-        
-        if operation.run() {
-            print("Printed?")
+    @objc func printThisPage() {
+        if let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString {
+            let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)
+            operation.jobTitle = "Printing \(url)"
+            operation.printInfo.orientation = NSPrintInfo.PaperOrientation.landscape
+            operation.printInfo.scalingFactor = 0.7
+            
+            if operation.run() {
+                print("Printed?")
+            }
         }
     }
 }

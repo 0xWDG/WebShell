@@ -6,10 +6,8 @@
 //  Copyright © 2018 WebShell. All rights reserved.
 //
 
-import Foundation
-import Cocoa
 import AppKit
+import Cocoa
+import Foundation
 
-class WSNSWindow : NSWindow {
-    
-}
+class WSNSWindow: NSWindow {}
