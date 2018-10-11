@@ -19,7 +19,7 @@ extension WSViewController {
      - Parameter jsContext: JSContext!
      - Parameter website: String (site host)
      */
-    internal func _injectPasswordFor(_ jsContext: JSContext!, website: String) -> Void {
+    internal func _injectPasswordFor(_ jsContext: JSContext!, website: String) {
         let database = UserDefaults(suiteName: website)
         if let savedUsername = database?.object(forKey: "username") {
             if let savedPassword = database?.object(forKey: "password") {
@@ -42,7 +42,7 @@ extension WSViewController {
      - Parameter jsContext: JSContext!
      - Parameter website: String (site host)
      */
-    internal func _injectPasswordListener(_ jsContext: JSContext!, website: String) -> Void {
+    internal func _injectPasswordListener(_ jsContext: JSContext!, website: String) {
         let database = UserDefaults(suiteName: website)
         let listener = "var WSPasswordManager={currentSite:document.location.host,initialize:function(e,a){WSPasswordManager.checkForms()},checkForms:function(){for(var e=document.getElementsByTagName(\"form\"),a=0,t=e.length;t>a;a++)\"post\"===e[a].method.toLowerCase()&&e[a].setAttribute(\"onsubmit\",\"event.preventDefault();return WSPasswordManager.validate(this);\")},validate:function(e){var a=e.querySelectorAll(\"input[name='username']\"),t=e.querySelectorAll(\"input[name='password']\");return a.length>0&&t.length>0&&(\"undefined\"!=typeof WSApp?WSApp.savePassword(a[0].value,t[0].value):window.alert(\"Internal error\nPassword manager failed to initialize\")),!1}};WSPasswordManager.initialize();"
         if settings.passwordManager {
@@ -61,7 +61,7 @@ extension WSViewController {
      - Parameter username: String
      - Parameter password: String
      */
-    internal func _savePasswordFor(_ jsContext: JSContext!, website: String, username: String, password: String) -> Void {
+    internal func _savePasswordFor(_ jsContext: JSContext!, website: String, username: String, password: String) {
         let database = UserDefaults(suiteName: website)
         database?.set(website, forKey: "website")
         database?.set(username, forKey: "username")

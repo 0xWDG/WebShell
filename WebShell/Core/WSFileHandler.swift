@@ -13,7 +13,6 @@ import WebKit
 // Issue: #29
 // This extension will handle up & downloads
 extension WSViewController {
-    
     // @wdg: Enable file uploads.
     // Issue: #29
     @objc(webView:runOpenPanelForFileButtonWithResultListener:allowMultipleFiles:) func webView(_ sender: WebView!, runOpenPanelForFileButtonWith resultListener: WebOpenPanelResultListener!, allowMultipleFiles: Bool) {
@@ -25,10 +24,9 @@ extension WSViewController {
         panel.canChooseFiles = true
         
         // On clicked on ok then...
-        panel.begin {(result) -> Void in
+        panel.begin { (result) -> Void in
             // User clicked OK
             if result.rawValue == NSFileHandlingPanelOKButton {
-                
                 // make the upload qeue named 'uploadQeue'
                 let uploadQeue: NSMutableArray = NSMutableArray()
                 for i in 0 ..< panel.urls.count {
@@ -36,7 +34,7 @@ extension WSViewController {
                     uploadQeue.add(panel.urls[i].relativePath)
                 }
                 
-                if (panel.urls.count == 1) {
+                if panel.urls.count == 1 {
                     // One file
                     resultListener.chooseFilename(String(describing: uploadQeue[0]))
                 } else {
@@ -45,7 +43,6 @@ extension WSViewController {
                 }
             }
         }
-        
     }
     
     /**
@@ -61,7 +58,7 @@ extension WSViewController {
     }
     
     // Usefull for debugging..
-    @nonobjc func webView(_ sender: WebView!,mouseDidMoveOverElement elementInformation: [NSObject : Any]!, modifierFlags: Int) {
+    @nonobjc func webView(_ sender: WebView!, mouseDidMoveOverElement elementInformation: [NSObject: Any]!, modifierFlags: Int) {
         // print("Sender=\(sender)\nEleInfo=\(elementInformation)\nModifier=\(modifierFlags)")
     }
 }

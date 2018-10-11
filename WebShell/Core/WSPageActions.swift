@@ -6,8 +6,8 @@
 //  Copyright © 2018 WebShell. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 extension WSViewController {
     /**
@@ -86,7 +86,7 @@ extension WSViewController {
         if let title = settings.title {
             mainWindow.window?.title = title
         }
-
+        
         // Force some preferences before loading...
         mainWebview.preferences.isJavaScriptEnabled = true
         mainWebview.preferences.javaScriptCanOpenWindowsAutomatically = true
@@ -116,7 +116,7 @@ extension WSViewController {
      
      - Parameter Sender: The sending object
      */
-    func printThisPage(_ Sender: AnyObject?) -> Void {
+    func printThisPage(_ Sender: AnyObject?) {
         let url = mainWebview.mainFrame.dataSource?.request?.url?.absoluteString
         
         let operation: NSPrintOperation = NSPrintOperation(view: mainWebview)

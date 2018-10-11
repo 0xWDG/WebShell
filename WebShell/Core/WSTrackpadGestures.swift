@@ -6,8 +6,8 @@
 //  Copyright © 2018 WebShell. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 import WebKit
 
 /**
@@ -55,7 +55,7 @@ extension WSViewController: NSGestureRecognizerDelegate {
     }
 }
 
-enum SwipeType { /*Two finger swipe type*/
+enum SwipeType {
     case left, right, none
 }
 
@@ -64,19 +64,20 @@ class GestureUtils {
      * To avoid duplicate code we could extract the content of this method into an GestureUtils method. Return nil if there isn't 2 touches and set the array only if != nil
      */
     static func twoFingersTouches(_ view: NSView, _ event: NSEvent) -> [String: NSTouch]? {
-        var twoFingersTouches: [String: NSTouch]? = nil // NSMutualDictionary was used before and didn't require casting id to string, revert if side-effects manifest
-        if (event.type == NSEvent.EventType.gesture) { // could maybe be: EventTypeBeginGesture
+        var twoFingersTouches: [String: NSTouch]? // NSMutualDictionary was used before and didn't require casting id to string, revert if side-effects manifest
+        if event.type == NSEvent.EventType.gesture { // could maybe be: EventTypeBeginGesture
             let touches: Set<NSTouch> = event.touches(matching: NSTouch.Phase.any, in: view) // touchesMatchingPhase:NSTouchPhaseAny inView:self
-            if (touches.count == 2){
+            if touches.count == 2 {
                 twoFingersTouches = [String: NSTouch]()
-                for touch in touches {//
-                    twoFingersTouches!["\((touch).identity)"] = touch //assigns each touch to the identity of the same touch
+                for touch in touches { //
+                    twoFingersTouches!["\(touch.identity)"] = touch // assigns each touch to the identity of the same touch
                 }
             }
         }
         
         return twoFingersTouches
     }
+    
     /**
      * Detects 2 finger (left/right) swipe gesture
      * NOTE: either of 3 enums is returned: .leftSwipe, .rightSwipe .none
@@ -88,27 +89,27 @@ class GestureUtils {
      */
     static func swipe(_ view: NSView, _ event: NSEvent, _ twoFingersTouches: [String: NSTouch]?) -> SwipeType {
         let endingTouches: Set<NSTouch> = event.touches(matching: NSTouch.Phase.ended, in: view)
-        if (endingTouches.count > 0 && twoFingersTouches != nil) {
+        if endingTouches.count > 0 && twoFingersTouches != nil {
             let beginningTouches: [String: NSTouch] = twoFingersTouches! // copy the twoFingerTouches data
             var magnitudes: [CGFloat] = [] // magnitude definition: the great size or extent of something
             for endingTouch in endingTouches {
-                let beginningTouch:NSTouch? = beginningTouches["\(endingTouch.identity)"]
-                if (beginningTouch == nil) { // skip if endingTouch doesn't have a matching beginningTouch
+                let beginningTouch: NSTouch? = beginningTouches["\(endingTouch.identity)"]
+                if beginningTouch == nil { // skip if endingTouch doesn't have a matching beginningTouch
                     continue
                 }
                 let magnitude: CGFloat = endingTouch.normalizedPosition.x - beginningTouch!.normalizedPosition.x
                 magnitudes.append(magnitude)
             }
             var sum: CGFloat = 0
-            for magnitude in magnitudes{
+            for magnitude in magnitudes {
                 sum += magnitude
             }
             let absoluteSum: CGFloat = abs(sum) // force value to be positive
             let kSwipeMinimumLength: CGFloat = 0.1
-            if (absoluteSum < kSwipeMinimumLength) { // Assert if the absolute sum is long enough to be considered a complete gesture
+            if absoluteSum < kSwipeMinimumLength { // Assert if the absolute sum is long enough to be considered a complete gesture
                 return .none
             }
-            if (sum > 0) {
+            if sum > 0 {
                 return .right
             } else {
                 return .left

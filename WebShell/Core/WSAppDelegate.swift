@@ -13,7 +13,6 @@ import NotificationCenter
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
-    
     var mainWindow: NSWindow!
     let popover = NSPopover()
     let statusItem = NSStatusBar.system.statusItem(withLength: -2)
@@ -28,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 button.action = #selector(AppDelegate.togglePopover(_:))
             }
             
-            let sb = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main") , bundle: nil)
+            let sb = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
             popover.contentViewController = sb.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "WSView")) as? NSViewController
             
             initialPopupSize()
@@ -117,7 +116,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
      
      - Parameter sender: the sender object
      */
-    @IBAction func printThisPage(_ sender: AnyObject) -> Void {
+    @IBAction func printThisPage(_ sender: AnyObject) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "printThisPage"), object: nil)
     }
     
@@ -126,7 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
      
      - Parameter sender: the sender object
      */
-    @IBAction func goHome(_ sender: AnyObject) -> Void {
+    @IBAction func goHome(_ sender: AnyObject) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "goHome"), object: nil)
     }
     
@@ -135,7 +134,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
      
      - Parameter sender: the sender object
      */
-    @IBAction func reload(_ sender: AnyObject) -> Void {
+    @IBAction func reload(_ sender: AnyObject) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "reload"), object: nil)
     }
     
@@ -144,14 +143,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
      
      - Parameter sender: the sender object
      */
-    @IBAction func copyUrl(_ sender: AnyObject) -> Void {
+    @IBAction func copyUrl(_ sender: AnyObject) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "copyUrl"), object: nil)
     }
     
     /**
      Popover initial popup size
      */
-    func initialPopupSize() -> Void {
+    func initialPopupSize() {
         popover.contentSize.width = CGFloat(Settings.shared.initialWindowWidth)
         popover.contentSize.height = CGFloat(Settings.shared.initialWindowHeight)
     }
@@ -188,7 +187,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
      - Parameter sender: the sender object
      */
     @objc func togglePopover(_ sender: AnyObject?) {
-        if (popover.isShown) {
+        if popover.isShown {
             closePopover(sender)
         } else {
             showPopover(sender)

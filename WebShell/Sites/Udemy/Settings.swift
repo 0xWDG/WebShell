@@ -9,14 +9,14 @@
 import Foundation
 
 class Settings: WSBaseSettings {
-	static let shared = Settings()
-	
-	override private init() {
-		super.init()
-		// Override default settings for this particular target
-		self.url = "http://udemy.com"
-        
+    static let shared = Settings()
+
+    private override init() {
+        super.init()
+        // Override default settings for this particular target
+        self.url = "http://udemy.com"
+
         // Save last URL
         self.openLastUrl = true
-	}
+    }
 }

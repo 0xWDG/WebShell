@@ -30,7 +30,7 @@ extension WSViewController {
             progressBar.increment(by: 24)
         }
         
-        if (!firstLoadingStarted) {
+        if !firstLoadingStarted {
             firstLoadingStarted = true
             launchingLabel.isHidden = false
         }
@@ -66,7 +66,7 @@ extension WSViewController {
         progressBar.increment(by: 50)
         progressBar.stopAnimation(self)
         progressBar.isHidden = true
-        progressBar.doubleValue = 1;
+        progressBar.doubleValue = 1
     }
     
     // @wdg: Better progress indicator
@@ -75,15 +75,15 @@ extension WSViewController {
         progressBar.increment(by: 50)
         progressBar.stopAnimation(self)
         progressBar.isHidden = true // Hide after we're done.
-        progressBar.doubleValue = 1;
-        if (!launchingLabel.isHidden) {
+        progressBar.doubleValue = 1
+        if !launchingLabel.isHidden {
             launchingLabel.isHidden = true
         }
         // Save URL for last navigated page
-		if let url = mainWebview.mainFrame.dataSource?.request.url?.absoluteString {
-			settings.lastURL = url
-		}
-		
+        if let url = mainWebview.mainFrame.dataSource?.request.url?.absoluteString {
+            settings.lastURL = url
+        }
+        
         // Inject Webhooks
         self.injectWebhooks(mainWebview.mainFrame.javaScriptContext)
         self.loopThroughiFrames()
