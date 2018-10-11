@@ -60,11 +60,11 @@ extension WSViewController {
      */
     internal func _WSFindCSS(_ jsContext: JSContext!) {
         if settings.enableInjectImport { // (EII)
-            let Seperated = (CommandLine.arguments[0]).components(separatedBy: "/")
+            let separated = (CommandLine.arguments[0]).components(separatedBy: "/")
             var newPath = ""
 
-            for i in 0 ... (Seperated.count - 3) {
-                newPath = newPath + Seperated[i] + "/"
+            for i in 0 ... (separated.count - 3) {
+                newPath = newPath + separated[i] + "/"
             }
 
             newPath = newPath + "Resources/CSS"
@@ -109,11 +109,11 @@ extension WSViewController {
      */
     internal func _WSFindJS(_ jsContext: JSContext!) {
         if settings.enableInjectImport { // (EII)
-            let Seperated = (CommandLine.arguments[0]).components(separatedBy: "/")
+            let separated = (CommandLine.arguments[0]).components(separatedBy: "/")
             var newPath = ""
 
-            for i in 0 ... (Seperated.count - 3) {
-                newPath = newPath + Seperated[i] + "/"
+            for i in 0 ... (separated.count - 3) {
+                newPath = newPath + separated[i] + "/"
             }
 
             newPath = newPath + "Resources/JavaScript"
